@@ -1,0 +1,52 @@
+---
+title: "Lectura de datos ordenados"
+format: html
+editor: visual
+---
+
+```{r}
+download.file("https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/metadatos_completos.csv", "data/metadatos.csv")
+download.file("https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/NH0472.csv", "data/estacion-NH0472.csv")
+download.file("https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/NH0910.csv", "data/estacion-NH0910.csv")
+download.file("https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/NH0046.csv", "data/estacion-NH0046.csv")
+download.file("https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/NH0098.csv", "data/estacion-NH0098.csv")
+download.file("https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/NH0437.csv", "data/estacion-NH0437.csv")
+```
+
+```{r}
+metadatos <- read.csv("data/metadatos.csv")
+estacion_NH0472 <- read.csv("data/estacion-NH0472.csv")
+estacion_NH0910 <- read.csv("data/estacion-NH0910.csv")
+estacion_NH0046 <- read.csv("data/estacion-NH0046.csv")
+estacion_NH0098 <- read.csv("data/estacion-NH0098.csv")
+estacion_NH0437 <- read.csv("data/estacion-NH0437.csv")
+```
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+glimpse(metadatos)
+glimpse(estacion_NH0046)
+glimpse(estacion_NH0098)
+glimpse(estacion_NH0472)
+glimpse(estacion_NH0910)
+glimpse(estacion_NH0437)
+```
+
+# Preguntas 4
+
+1.  Tienen la misma cantidad de columnas y son iguales
+2.  Si, en su mayoria son correctos
+3.  Hay entre 15553 y 23733 en los de estación y en el de metadatos hay 258 registros
+
+# Preguntas 5
+
+```{r}
+estacion_completo <- rbind(estacion_NH0046, estacion_NH0098, estacion_NH0437, estacion_NH0472, estacion_NH0910)
+
+estacion_completo |> 
+  group_by(id) |> 
+  summarise(observaciones_temperatura = sum (!is.na(unlist(across(starts_with("temperatura"))))))
+```
