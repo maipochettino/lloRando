@@ -24,7 +24,14 @@ estacion_NH0437 <- read.csv("data/estacion-NH0437.csv")
 
 ```{r}
 library(dplyr)
+library(lubridate
 ```
+
+```{r}
+
+```
+
+`{)}`
 
 ```{r}
 glimpse(metadatos)
@@ -49,4 +56,55 @@ estacion_completo <- rbind(estacion_NH0046, estacion_NH0098, estacion_NH0437, es
 estacion_completo |> 
   group_by(id) |> 
   summarise(observaciones_temperatura = sum (!is.na(unlist(across(starts_with("temperatura"))))))
+```
+
+```{r}
+estacion_completo |>
+  group_by(id) |>
+  summarise(
+    temp_min = min((unlist(across(starts_with("temperatura")))), na.rm = TRUE),
+    temp_max = max((unlist(across(starts_with("temperatura")))), na.rm = TRUE)
+  )
+```
+
+```{r}
+estacion_completo |>
+  group_by(id) |>
+  summarise(
+    promedio = mean(temperatura_abrigo_150cm, na.rm = TRUE),
+    desvio_estandar = sd(temperatura_abrigo_150cm, na.rm = TRUE)
+  )
+```
+
+```{r}
+estacion_completo |>
+  group_by(id) |>
+  summarise(
+    n_na = sum(is.na(temperatura_abrigo_150cm)),
+    n_total = n(),
+    prop_na = n_na / n_total
+  )
+```
+
+```{r}
+estacion_completo |> 
+  mutate(anio = year(fecha)) |> 
+  group_by(id, anio) |>
+  summarise(
+    temp_media = mean(temperatura_abrigo_150cm, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+```{r}
+estacion_completo |>
+  mutate(
+    fecha = as.Date(fecha),
+    mes = floor_date(fecha, "month")
+  ) |>
+  group_by(id, mes) |>
+  summarise(
+    precip_acumulada = sum(precipitacion_pluviometrica, na.rm = TRUE),
+    .groups = "drop"
+  )
 ```
