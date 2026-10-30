@@ -20,4 +20,7 @@ Imports:
     dplyr,
     ggplot2,
     lubridate,
-    readr
+    readr,
+    stats,
+    tidyr,
+    utils

@@ -33,17 +33,17 @@ descargar_estacion <- function(id, ruta) {
       showWarnings = FALSE
     )
 
-    download.file(
+    utils::download.file(
       url = url,
       destfile = ruta,
       mode = "wb"
     )
 
-    message("Se descargó el archivo de la estación ", id, " en ", ruta, ".")
+    message("Se descarg\u00f3 el archivo de la estaci\u00f3n ", id, " en ", ruta, ".")
 
   } else {
 
-    message("El archivo ", ruta, " ya existía, se lee directamente.")
+    message("El archivo ", ruta, " ya exist\u00eda, se lee directamente.")
 
   }
 

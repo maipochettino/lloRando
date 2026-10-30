@@ -1,11 +1,10 @@
-
 #' Graficar la temperatura media mensual
 #'
 #' Calcula y grafica la temperatura media mensual
 #' de una o más estaciones meteorológicas.
 #'
 #' @param datos Data frame con las columnas fecha,
-#' estacion y temperatura_abrigo_150cm.
+#' id y temperatura_abrigo_150cm.
 #' @param colores Vector de colores para las estaciones.
 #' Si es NULL, se eligen colores al azar.
 #' @param titulo Título del gráfico. Por defecto, "Temperatura".
@@ -22,7 +21,7 @@ grafico_temperatura_mensual <- function(
     colores = NULL,
     titulo = "Temperatura") {
 
-  estaciones <- unique(as.character(datos$estacion))
+  estaciones <- unique(as.character(datos$id))
 
   if (length(estaciones) == 0 || nrow(datos) == 0) {
     stop("El data frame no contiene observaciones.")
@@ -36,7 +35,7 @@ grafico_temperatura_mensual <- function(
   }
 
   if (length(colores) != length(estaciones)) {
-    stop("Debe indicarse un color por cada estación.")
+    stop("Debe indicarse un color por cada estaci\u00f3n.")
   }
 
   names(colores) <- estaciones
@@ -45,7 +44,7 @@ grafico_temperatura_mensual <- function(
     dplyr::mutate(
       mes = lubridate::floor_date(fecha, "month")
     ) |>
-    dplyr::group_by(estacion, mes) |>
+    dplyr::group_by(id, mes) |>
     dplyr::summarise(
       media = mean(
         temperatura_abrigo_150cm,
@@ -59,8 +58,8 @@ grafico_temperatura_mensual <- function(
     ggplot2::aes(
       x = mes,
       y = media,
-      color = estacion,
-      group = estacion
+      color = id,
+      group = id
     )
   ) +
     ggplot2::geom_line() +
@@ -68,8 +67,8 @@ grafico_temperatura_mensual <- function(
     ggplot2::labs(
       title = titulo,
       x = "Mes",
-      y = "Temperatura media (°C)",
-      color = "Estación"
+      y = "Temperatura media (\u00b0C)",
+      color = "Estaci\u00f3n"
     ) +
     ggplot2::theme_minimal()
 
