@@ -48,7 +48,7 @@ remotes::install_github(“maipochettino/lloRando”)
 El dataset estaciones reúne observaciones diarias de cinco estaciones
 del INTA: *NH0472, NH0910, NH0046, NH0098 y NH0437*.
 
-{r datos} library(lloRando)
+{r datos} library(lloRando) 
 
 dim(estaciones)
 
