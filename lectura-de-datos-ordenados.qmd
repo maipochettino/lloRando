@@ -26,6 +26,7 @@ estacion_NH0437 <- read.csv("data/estacion-NH0437.csv")
 library(dplyr)
 library(lubridate)
 library (ggplot2)
+library(tidyr)
 ```
 
 ```{r}
@@ -108,24 +109,40 @@ estacion_completo |>
 estacion_completo|>
   filter(id=="NH0437")|>
   mutate(fecha= as.Date(fecha))|>
-  ggplot(aes(fecha, temperatura_abrigo_150cm))+geom_point(alpha=0.3 , size=0.8)+geom_smooth(method = "lm", color="pink")
+  ggplot(
+    aes(fecha, temperatura_abrigo_150cm)) +
+  geom_point(alpha=0.3 , size=0.8) +
+  geom_smooth(
+    method = "lm", color="pink"
+    )
 ```
 
 ```{r}
 estacion_completo|>
-  mutate(fecha=as.Date(fecha), mes=month(fecha))|>
+  mutate(
+    fecha=as.Date(fecha), 
+    mes=month(fecha)
+    )|>
   group_by(id,mes)|>
-  summarise(prom_mensual = mean(temperatura_abrigo_150cm, na.rm=TRUE), .groups = "drop")|>
-  ggplot(aes(mes, prom_mensual, color=id))+
-  geom_line()+
-  labs(x="Fecha", y="Temperatura media mensual", color="estación")
+  summarise(
+    prom_mensual = mean(temperatura_abrigo_150cm, na.rm=TRUE), 
+    .groups = "drop")|>
+  ggplot(
+    aes(mes, prom_mensual, color=id)) +
+  geom_line() +
+  labs(
+    x="Fecha", 
+    y="Temperatura media mensual", 
+    color="estación"
+    )
 ```
 
 ```{r}
 estacion_completo|>
-  ggplot(aes(temperatura_abrigo_150cm, humedad_media_8_14_20))+
-  geom_point(alpha=0.3 , size=0.8)+geom_smooth()
-  
+  ggplot(
+    aes(temperatura_abrigo_150cm, humedad_media_8_14_20)) +
+  geom_point(alpha=0.2, size=0.8) +
+  geom_smooth()
 ```
 
 ```{r}
@@ -139,14 +156,13 @@ resumen
 ```
 
 ```{r}
-library(tidyr)
-
 resumen_largo <- resumen |>
   pivot_longer(
     cols = c(promedio, desvio_estandar),
     names_to = "estadistico",
     values_to = "valor"
   )
+
 resumen_largo
 ```
 
@@ -165,7 +181,5 @@ names(estacion_completo)
 estacion_con_metadatos <- left_join(estacion_completo, metadatos, by = "id")
 estacion_con_metadatos
 
-# chequeo: estaciones sin metadatos (debería dar 0 filas)
 anti_join(estacion_completo, metadatos, by = "id")
-
 ```
