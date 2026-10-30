@@ -1,0 +1,123 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# lloRando <img src="man/figures/logo.svg" align="right" height="139" alt="Logo de lloRando" />
+
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/maipochettino/lloRando/actions/workflows/R-CMD-check.yaml/badge.svg?branch=master)](https://github.com/maipochettino/lloRando/actions/workflows/R-CMD-check.yaml)
+[![Cobertura de
+tests](https://github.com/maipochettino/lloRando/actions/workflows/test-coverage.yaml/badge.svg?branch=master)](https://github.com/maipochettino/lloRando/actions/workflows/test-coverage.yaml)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
+
+> Porque a veces el clima te hace llorar… y los datos meteorológicos
+> también. 😭
+
+*lloRando* es un paquete de R que te lleva de un CSV del INTA a un
+gráfico del clima en pocas líneas: leé, resumí y graficá datos diarios
+de estaciones meteorológicas sin sufrir en el intento.
+
+⚠️ *Proyecto de práctica para Introducción a la Programación II. Es un
+paquete de prueba y no está pensado para un uso real.*
+
+## ⚡ En 30 segundos
+
+{r rapido, eval=FALSE} library(lloRando)
+
+tabla_resumen_temperatura(estaciones)
+grafico_temperatura_mensual(estaciones)
+
+## 🛠️ Instalación
+
+{r instalacion, eval=FALSE} install.packages(“remotes”)
+remotes::install_github(“maipochettino/lloRando”)
+
+## 🧰 ¿Qué incluye?
+
+| Función | Para qué sirve |
+|----|----|
+| leer_datos() | Lee (o descarga) los datos de una estación |
+| tabla_resumen_temperatura() | Mínima, máxima, promedio y desvío por estación |
+| grafico_temperatura_mensual() | Temperatura media de cada mes del año |
+| estaciones | Dataset con 5 estaciones listo para usar |
+
+## 🗂️ Datos incluidos
+
+El dataset estaciones reúne observaciones diarias de cinco estaciones
+del INTA: *NH0472, NH0910, NH0046, NH0098 y NH0437*.
+
+{r datos} library(lloRando)
+
+dim(estaciones)
+
+unique(estaciones\$id)
+
+head(estaciones\[c(“id”, “fecha”, “temperatura_abrigo_150cm”)\])
+
+- id: identifica la estación.
+- fecha: día de la observación.
+- temperatura_abrigo_150cm: temperatura en °C a 150 cm del suelo.
+
+Los datos originales vienen del [repositorio del
+curso](https://github.com/rse-r/intro-programacion/tree/main/datos).
+
+## 📥 Leer datos de una estación
+
+leer_datos() recibe el id de la estación y la ruta del CSV. Si el
+archivo existe, lo lee; si no, lo descarga primero. Necesita Internet,
+así que este ejemplo no se ejecuta al construir el README:
+
+{r lectura, eval=FALSE} datos \<- leer_datos(id = “NH0437”, ruta =
+“datos/NH0437.csv”)
+
+head(datos)
+
+## 🌡️ Resumir la temperatura
+
+{r resumen} tabla_resumen_temperatura(estaciones)
+
+¿Querés solo algunas estaciones? Usá ids:
+
+{r resumen-filtrado} tabla_resumen_temperatura(estaciones, ids =
+c(“NH0437”, “NH0472”))
+
+Los valores faltantes (NA) se ignoran en los cálculos.
+
+## 📊 Graficar la temperatura mensual
+
+El gráfico muestra el promedio de cada mes del año, juntando los mismos
+meses de todos los años. Podés elegir los colores y el título:
+
+{r grafico-mensual} seleccion \<- estaciones\[estaciones\$id %in%
+c(“NH0437”, “NH0472”), \]
+
+grafico_temperatura_mensual( seleccion, colores = c(NH0437 =
+“steelblue”, NH0472 = “tomato”), titulo = “Temperatura media mensual” )
+
+## 📚 Documentación
+
+Cada función tiene su ayuda dentro de R:
+
+{r ayuda, eval=FALSE} ?leer_datos ?tabla_resumen_temperatura
+?grafico_temperatura_mensual
+
+La guía de uso completa está en el [sitio web del
+paquete](https://maipochettino.github.io/lloRando/).
+
+## 👩‍💻 Autoras
+
+- Mailén Pochettino
+- Ornella Quintanilla
+- Candela Cambiaso
+
+## 🤝 Contribuciones
+
+¿Encontraste un error o tenés una idea? Leé la [guía para
+contribuir](CONTRIBUTING.md). Todas las personas que participen deben
+respetar el [código de conducta](CODE_OF_CONDUCT.md).
+
+## 📄 Licencia
+
+Código bajo licencia MIT. Mirá [LICENSE.md](LICENSE.md).
