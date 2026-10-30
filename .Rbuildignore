@@ -1,5 +1,6 @@
 ^lloRando\.Rproj$
 ^\.Rproj\.user$
+^README\.Rmd$
 ^lectura-de-datos-ordenados\.qmd$
 ^LICENSE\.md$
 ^data$
