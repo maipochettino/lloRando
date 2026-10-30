@@ -1,8 +1,10 @@
 
+
 #' Descargar y leer los datos de una estación
 #'
 #' Descarga el CSV de una estación meteorológica y lo lee
-#' como un data.frame.
+#' como un data.frame. Si el archivo ya existe en la ruta
+#' indicada, lo lee directamente sin volver a descargarlo.
 #'
 #' @param id Identificador de la estación, por ejemplo "NH0437".
 #' @param ruta Ruta donde se guardará el archivo CSV.
@@ -23,20 +25,29 @@ descargar_estacion <- function(id, ruta) {
 
   url <- paste0(url_base, id, ".csv")
 
-  dir.create(
-    dirname(ruta),
-    recursive = TRUE,
-    showWarnings = FALSE
-  )
+  if (!file.exists(ruta)) {
 
-  download.file(
-    url = url,
-    destfile = ruta,
-    mode = "wb"
-  )
+    dir.create(
+      dirname(ruta),
+      recursive = TRUE,
+      showWarnings = FALSE
+    )
+
+    download.file(
+      url = url,
+      destfile = ruta,
+      mode = "wb"
+    )
+
+    message("Se descargó el archivo de la estación ", id, " en ", ruta, ".")
+
+  } else {
+
+    message("El archivo ", ruta, " ya existía, se lee directamente.")
+
+  }
 
   datos <- readr::read_csv(ruta, show_col_types = FALSE)
 
   return(datos)
 }
-
