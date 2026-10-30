@@ -25,3 +25,7 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+    readr,
+    stats,
+    tidyr,
+    utils
