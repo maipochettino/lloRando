@@ -20,6 +20,11 @@ Imports:
     dplyr,
     ggplot2,
     lubridate,
+    readr
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
     readr,
     stats,
     tidyr,
