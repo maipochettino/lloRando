@@ -7,7 +7,7 @@
 tabla_resumen_temperatura(datos)
 }
 \arguments{
-\item{datos}{Data frame con las columnas estacion
+\item{datos}{Data frame con las columnas id
 y temperatura_abrigo_150cm.}
 }
 \value{

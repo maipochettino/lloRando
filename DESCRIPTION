@@ -25,6 +25,13 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+<<<<<<< HEAD
 Depends: 
     R (>= 3.5)
 LazyData: true
+=======
+    readr,
+    stats,
+    tidyr,
+    utils
+>>>>>>> c6e4cf91025724492fadd3500538009afc82943c

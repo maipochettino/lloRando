@@ -16,7 +16,8 @@ Un tibble con los datos de la estación.
 }
 \description{
 Descarga el CSV de una estación meteorológica y lo lee
-como un data.frame.
+como un data.frame. Si el archivo ya existe en la ruta
+indicada, lo lee directamente sin volver a descargarlo.
 }
 \examples{
 \dontrun{
