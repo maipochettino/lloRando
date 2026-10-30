@@ -13,26 +13,23 @@ Description: Paquete de R desarrollado para Programacion II. Permite
 License: MIT + file LICENSE
 Encoding: UTF-8
 Config/roxygen2/version: 8.1.1
+Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/maipochettino/lloRando
 BugReports: https://github.com/maipochettino/lloRando/issues
-Imports: 
-       dplyr,
-       ggplot2,
-       lubridate,
-       readr,
-       stats,
-       tidyr,
-       utils
-Suggests: 
-       knitr,
-       rmarkdown
-VignetteBuilder: knitr
 Depends: 
     R (>= 3.5)
-LazyData: true
+Imports: 
+    dplyr,
+    ggplot2,
+    lubridate,
     readr,
     stats,
     tidyr,
     utils
-
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+LazyData: true

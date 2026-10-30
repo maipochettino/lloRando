@@ -3,8 +3,8 @@
 ^README\.Rmd$
 ^lectura-de-datos-ordenados\.qmd$
 ^LICENSE\.md$
-<<<<<<< HEAD
 ^data-raw$
-=======
-^data$
->>>>>>> c6e4cf91025724492fadd3500538009afc82943c
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
