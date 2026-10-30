@@ -1,26 +1,70 @@
 # lloRando
 
+Número 01 · Santa Fe, Argentina · Datos del INTA
+
 > Porque a veces el clima te hace llorar… y los datos meteorológicos
-> también. 😭
+> también.
 
-*lloRando* es un paquete de R que te lleva de un CSV del INTA a un
-gráfico del clima en pocas líneas: leé, resumí y graficá datos diarios
-de estaciones meteorológicas sin sufrir en el intento.
+Hay paquetes que resuelven problemas y hay paquetes que te acompañan
+mientras los resolvés. *lloRando* es de los segundos. Toma los archivos
+diarios de las estaciones meteorológicas del INTA, esos CSV de treinta y
+cinco columnas que nadie quiere abrir un lunes, y los convierte en una
+tabla prolija y en un gráfico que se entiende de un vistazo.
 
-⚠️ *Proyecto de práctica para Introducción a la Programación II. Es un
-paquete de prueba y no está pensado para un uso real.*
+Tres funciones, un dataset y ninguna excusa para no mirar el clima con
+otros ojos.
 
-## ⚡ En 30 segundos
+## El clima, en cifras
+
+95.681observaciones diarias
+
+5estaciones
+
+67años de registros
+
+1956primer dato
+
+Todo eso viene incluido en el paquete, en el dataset `estaciones`. Lo
+instalás y ya lo tenés: sin descargas, sin rutas, sin sufrimiento.
+
+## Las protagonistas
+
+Cinco estaciones de la provincia de Santa Fe, de norte a sur, con
+décadas de mediciones a cuestas.
+
+| Estación         | Id       | Registros   |
+|------------------|----------|-------------|
+| INTA Reconquista | `NH0437` | 1970 – 2023 |
+| INTA Rafaela     | `NH0098` | 1956 – 2023 |
+| INTA Oliveros    | `NH0472` | 1961 – 2017 |
+| Las Rosas        | `NH0910` | 1975 – 2017 |
+| UNR Zavalla      | `NH0046` | 1973 – 2023 |
+
+Cada fila del dataset es un día en una estación. Las columnas que más
+vas a usar son estas:
 
 ``` r
 
-library(lloRando)
-
-tabla_resumen_temperatura(estaciones)
-grafico_temperatura_mensual(estaciones)
+head(estaciones[c("id", "fecha", "temperatura_abrigo_150cm")])
+#> # A tibble: 6 × 3
+#>   id     fecha      temperatura_abrigo_150cm
+#>   <chr>  <date>                        <dbl>
+#> 1 NH0046 1973-01-01                     27  
+#> 2 NH0046 1973-01-02                     27.2
+#> 3 NH0046 1973-01-03                     25.2
+#> 4 NH0046 1973-01-04                     26.4
+#> 5 NH0046 1973-01-05                     26.0
+#> 6 NH0046 1973-01-06                     20.4
 ```
 
-## 🛠️ Instalación
+- `id`: el código de la estación.
+- `fecha`: el día de la observación.
+- `temperatura_abrigo_150cm`: la temperatura media, en °C, medida a 150
+  cm del suelo dentro del abrigo meteorológico.
+
+## Instalación
+
+*lloRando* vive en GitHub. Para instalarlo:
 
 ``` r
 
@@ -28,63 +72,32 @@ install.packages("remotes")
 remotes::install_github("maipochettino/lloRando")
 ```
 
-## 🧰 ¿Qué incluye?
-
-| Función | Para qué sirve |
-|----|----|
-| [`descargar_estacion()`](https://maipochettino.github.io/lloRando/reference/descargar_estacion.md) | Descarga (o lee, si ya existe) los datos de una estación |
-| [`tabla_resumen_temperatura()`](https://maipochettino.github.io/lloRando/reference/tabla_resumen_temperatura.md) | Promedio y desvío de la temperatura por estación |
-| [`grafico_temperatura_mensual()`](https://maipochettino.github.io/lloRando/reference/grafico_temperatura_mensual.md) | Temperatura media mensual de cada estación |
-| `estaciones` | Dataset con 5 estaciones listo para usar |
-
-## 🗂️ Datos incluidos
-
-El dataset `estaciones` reúne observaciones diarias de cinco estaciones
-del INTA: **NH0472, NH0910, NH0046, NH0098 y NH0437**.
+Y para empezar:
 
 ``` r
 
 library(lloRando)
-
-dim(estaciones)
-#> [1] 95681    35
-
-unique(estaciones$id)
-#> [1] "NH0046" "NH0098" "NH0437" "NH0472" "NH0910"
-
-head(estaciones[c("id", "fecha", "temperatura_abrigo_150cm")])
-#>       id      fecha temperatura_abrigo_150cm
-#> 1 NH0046 1973-01-01                    27.00
-#> 2 NH0046 1973-01-02                    27.20
-#> 3 NH0046 1973-01-03                    25.15
-#> 4 NH0046 1973-01-04                    26.45
-#> 5 NH0046 1973-01-05                    26.05
-#> 6 NH0046 1973-01-06                    20.45
 ```
 
-- `id`: identifica la estación.
-- `fecha`: día de la observación.
-- `temperatura_abrigo_150cm`: temperatura en °C a 150 cm del suelo.
+## En tres gestos
 
-Los datos originales vienen del [repositorio del
-curso](https://github.com/rse-r/intro-programacion/tree/main/datos).
-
-## 📥 Descargar datos de una estación
+### I. Descargar
 
 [`descargar_estacion()`](https://maipochettino.github.io/lloRando/reference/descargar_estacion.md)
-recibe el id de la estación y la ruta donde guardar el CSV. Si el
-archivo ya existe, lo lee directamente; si no, lo descarga primero.
-Necesita Internet, así que este ejemplo no se ejecuta al construir el
-README:
+trae los datos de cualquier estación del repositorio del curso. Si el
+archivo ya está en tu compu, no lo vuelve a descargar: lo lee
+directamente.
 
 ``` r
 
 datos <- descargar_estacion(id = "NH0437", ruta = "datos/NH0437.csv")
-
-head(datos)
 ```
 
-## 🌡️ Resumir la temperatura
+### II. Resumir
+
+[`tabla_resumen_temperatura()`](https://maipochettino.github.io/lloRando/reference/tabla_resumen_temperatura.md)
+calcula el promedio y el desvío estándar de la temperatura de cada
+estación, en formato largo. Los días sin dato se ignoran.
 
 ``` r
 
@@ -104,64 +117,49 @@ tabla_resumen_temperatura(estaciones)
 #> 10 NH0910 desvio       6.12
 ```
 
-¿Querés solo algunas estaciones? Filtralas antes:
+¿Solo algunas estaciones? Filtralas antes:
 
 ``` r
 
-seleccion <- estaciones[estaciones$id %in% c("NH0437", "NH0472"), ]
+norte_sur <- estaciones[estaciones$id %in% c("NH0437", "NH0046"), ]
 
-tabla_resumen_temperatura(seleccion)
+tabla_resumen_temperatura(norte_sur)
 #> # A tibble: 4 × 3
 #>   id     estadistico valor
 #>   <chr>  <chr>       <dbl>
-#> 1 NH0437 media       20.2 
-#> 2 NH0437 desvio       5.77
-#> 3 NH0472 media       18.0 
-#> 4 NH0472 desvio       5.94
+#> 1 NH0046 media       17.3 
+#> 2 NH0046 desvio       5.90
+#> 3 NH0437 media       20.2 
+#> 4 NH0437 desvio       5.77
 ```
 
-Los valores faltantes (`NA`) se ignoran en los cálculos.
+### III. Graficar
 
-## 📊 Graficar la temperatura mensual
-
-El gráfico muestra la temperatura media de cada mes, para cada estación.
-Podés elegir los colores y el título:
+[`grafico_temperatura_mensual()`](https://maipochettino.github.io/lloRando/reference/grafico_temperatura_mensual.md)
+promedia la temperatura de cada mes y la dibuja como una línea por
+estación. Podés elegir los colores y el título, y como devuelve un
+gráfico de ggplot2, también podés seguir editándolo.
 
 ``` r
+
+recientes <- norte_sur[norte_sur$fecha >= as.Date("2018-01-01"), ]
 
 grafico_temperatura_mensual(
-  seleccion,
-  colores = c(NH0437 = "steelblue", NH0472 = "tomato"),
-  titulo = "Temperatura media mensual"
-)
-#> Warning: Removed 1 row containing missing values or values outside the scale range
-#> (`geom_line()`).
+  recientes,
+  colores = c(NH0437 = "#5B3F8C", NH0046 = "#C9A227"),
+  titulo = "Reconquista y Zavalla, mes a mes"
+) +
+  ggplot2::theme(
+    plot.title = ggplot2::element_text(family = "serif", size = 18),
+    legend.position = "top"
+  )
 ```
 
-![](reference/figures/README-grafico-mensual-1.png)
+![](reference/figures/index-graficar-1.png)
 
-## 📚 Documentación
+Reconquista, más al norte, se mantiene siempre unos grados por encima de
+Zavalla, y los inviernos se separan más que los veranos.
 
-Cada función tiene su ayuda dentro de R:
+## Detrás de escena
 
-``` r
-
-?descargar_estacion
-?tabla_resumen_temperatura
-?grafico_temperatura_mensual
-?estaciones
-```
-
-La guía de uso completa está en el [sitio web del
-paquete](https://maipochettino.github.io/lloRando/).
-
-## 👩‍💻 Autoras
-
-- Mailén Pochettino
-- Ornella Quintanilla
-- Candela Cambiaso
-
-## 📄 Licencia
-
-Código bajo licencia MIT. Mirá
-[LICENSE.md](https://maipochettino.github.io/lloRando/LICENSE.md).
+- \*\*Sin
