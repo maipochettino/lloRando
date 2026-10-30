@@ -47,7 +47,7 @@ descargar_estacion <- function(id, ruta) {
 
   }
 
-  datos <- readr::read_csv(ruta, show_col_types = FALSE)
+  datos <- readr::read_csv(ruta, show_col_types = FALSE, guess_max = Inf)
 
   return(datos)
 }
