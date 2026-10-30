@@ -1,5 +1,5 @@
 Package: lloRando
-Title: What the Package Does (One Line, Title Case)
+Title: Datos Meteorologicos de Estaciones del INTA
 Version: 0.0.0.9000
 Authors@R: c(
     person("Mailén", "Pochettino", , "mipochettinodelpuer@mail.austral.edu.ar", role = c("aut", "cre")),
@@ -17,21 +17,22 @@ Roxygen: list(markdown = TRUE)
 URL: https://github.com/maipochettino/lloRando
 BugReports: https://github.com/maipochettino/lloRando/issues
 Imports: 
-    dplyr,
-    ggplot2,
-    lubridate,
-    readr
+       dplyr,
+       ggplot2,
+       lubridate,
+       readr,
+       stats,
+       tidyr,
+       utils
 Suggests: 
-    knitr,
-    rmarkdown
+       knitr,
+       rmarkdown
 VignetteBuilder: knitr
-<<<<<<< HEAD
 Depends: 
     R (>= 3.5)
 LazyData: true
-=======
     readr,
     stats,
     tidyr,
     utils
->>>>>>> c6e4cf91025724492fadd3500538009afc82943c
+
