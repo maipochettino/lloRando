@@ -8,7 +8,7 @@ grafico_temperatura_mensual(datos, colores = NULL, titulo = "Temperatura")
 }
 \arguments{
 \item{datos}{Data frame con las columnas fecha,
-estacion y temperatura_abrigo_150cm.}
+id y temperatura_abrigo_150cm.}
 
 \item{colores}{Vector de colores para las estaciones.
 Si es NULL, se eligen colores al azar.}

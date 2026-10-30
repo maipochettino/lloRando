@@ -1,0 +1,62 @@
+---
+title: "Uso de lloRando"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Uso de lloRando}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+## Introducción
+
+**lloRando** permite leer, resumir y graficar datos meteorológicos
+del INTA. En esta guía vamos a recorrer las tres funciones principales
+con ejemplos.
+
+```{r setup}
+library(lloRando)
+```
+
+## Los datos
+
+El paquete incluye el dataset `estaciones`, con datos diarios de cinco
+estaciones.
+
+```{r}
+dim(estaciones)
+head(estaciones[c("id", "fecha", "temperatura_abrigo_150cm")])
+```
+
+## Resumir la temperatura
+
+`tabla_resumen_temperatura()` calcula la mínima, la máxima, el promedio
+y el desvío de cada estación.
+
+```{r}
+tabla_resumen_temperatura(estaciones)
+```
+
+También podemos elegir solo algunas estaciones con el argumento `ids`:
+
+```{r}
+tabla_resumen_temperatura(estaciones, ids = c("NH0437", "NH0472"))
+```
+
+## Graficar la temperatura mensual
+
+`grafico_temperatura_mensual()` muestra el promedio de cada mes del
+año. Podemos cambiar los colores y el título:
+
+```{r}
+seleccion <- estaciones[estaciones$id %in% c("NH0437", "NH0472"), ]
+
+grafico_temperatura_mensual(
+  seleccion,
+  colores = c(NH0437 = "#6d28d9", NH0472 = "#a78bfa"),
+  titulo = "Temperatura media mensual"
+)
+```
