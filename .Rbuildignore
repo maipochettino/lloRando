@@ -3,4 +3,6 @@
 ^README\.Rmd$
 ^lectura-de-datos-ordenados\.qmd$
 ^LICENSE\.md$
+^data-raw$
 ^data$
+
