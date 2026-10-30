@@ -4,3 +4,7 @@
 ^lectura-de-datos-ordenados\.qmd$
 ^LICENSE\.md$
 ^data-raw$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$

@@ -5,9 +5,6 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/maipochettino/lloRando/actions/workflows/R-CMD-check.yaml/badge.svg?branch=master)](https://github.com/maipochettino/lloRando/actions/workflows/R-CMD-check.yaml)
-[![Cobertura de
-tests](https://github.com/maipochettino/lloRando/actions/workflows/test-coverage.yaml/badge.svg?branch=master)](https://github.com/maipochettino/lloRando/actions/workflows/test-coverage.yaml)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
@@ -24,84 +21,136 @@ paquete de prueba y no está pensado para un uso real.*
 
 ## ⚡ En 30 segundos
 
-{r rapido, eval=FALSE} library(lloRando)
+``` r
+library(lloRando)
 
 tabla_resumen_temperatura(estaciones)
 grafico_temperatura_mensual(estaciones)
+```
 
 ## 🛠️ Instalación
 
-{r instalacion, eval=FALSE} install.packages(“remotes”)
-remotes::install_github(“maipochettino/lloRando”)
+``` r
+install.packages("remotes")
+remotes::install_github("maipochettino/lloRando")
+```
 
 ## 🧰 ¿Qué incluye?
 
 | Función | Para qué sirve |
 |----|----|
-| leer_datos() | Lee (o descarga) los datos de una estación |
-| tabla_resumen_temperatura() | Mínima, máxima, promedio y desvío por estación |
-| grafico_temperatura_mensual() | Temperatura media de cada mes del año |
-| estaciones | Dataset con 5 estaciones listo para usar |
+| `descargar_estacion()` | Descarga (o lee, si ya existe) los datos de una estación |
+| `tabla_resumen_temperatura()` | Promedio y desvío de la temperatura por estación |
+| `grafico_temperatura_mensual()` | Temperatura media mensual de cada estación |
+| `estaciones` | Dataset con 5 estaciones listo para usar |
 
 ## 🗂️ Datos incluidos
 
-El dataset estaciones reúne observaciones diarias de cinco estaciones
-del INTA: *NH0472, NH0910, NH0046, NH0098 y NH0437*.
+El dataset `estaciones` reúne observaciones diarias de cinco estaciones
+del INTA: **NH0472, NH0910, NH0046, NH0098 y NH0437**.
 
-{r datos} library(lloRando) 
+``` r
+library(lloRando)
 
 dim(estaciones)
+#> [1] 95681    35
 
-unique(estaciones\$id)
+unique(estaciones$id)
+#> [1] "NH0046" "NH0098" "NH0437" "NH0472" "NH0910"
 
-head(estaciones\[c(“id”, “fecha”, “temperatura_abrigo_150cm”)\])
+head(estaciones[c("id", "fecha", "temperatura_abrigo_150cm")])
+#>       id      fecha temperatura_abrigo_150cm
+#> 1 NH0046 1973-01-01                    27.00
+#> 2 NH0046 1973-01-02                    27.20
+#> 3 NH0046 1973-01-03                    25.15
+#> 4 NH0046 1973-01-04                    26.45
+#> 5 NH0046 1973-01-05                    26.05
+#> 6 NH0046 1973-01-06                    20.45
+```
 
-- id: identifica la estación.
-- fecha: día de la observación.
-- temperatura_abrigo_150cm: temperatura en °C a 150 cm del suelo.
+- `id`: identifica la estación.
+- `fecha`: día de la observación.
+- `temperatura_abrigo_150cm`: temperatura en °C a 150 cm del suelo.
 
 Los datos originales vienen del [repositorio del
 curso](https://github.com/rse-r/intro-programacion/tree/main/datos).
 
-## 📥 Leer datos de una estación
+## 📥 Descargar datos de una estación
 
-leer_datos() recibe el id de la estación y la ruta del CSV. Si el
-archivo existe, lo lee; si no, lo descarga primero. Necesita Internet,
-así que este ejemplo no se ejecuta al construir el README:
+`descargar_estacion()` recibe el id de la estación y la ruta donde
+guardar el CSV. Si el archivo ya existe, lo lee directamente; si no, lo
+descarga primero. Necesita Internet, así que este ejemplo no se ejecuta
+al construir el README:
 
-{r lectura, eval=FALSE} datos \<- leer_datos(id = “NH0437”, ruta =
-“datos/NH0437.csv”)
+``` r
+datos <- descargar_estacion(id = "NH0437", ruta = "datos/NH0437.csv")
 
 head(datos)
+```
 
 ## 🌡️ Resumir la temperatura
 
-{r resumen} tabla_resumen_temperatura(estaciones)
+``` r
+tabla_resumen_temperatura(estaciones)
+#> # A tibble: 10 × 3
+#>    id     estadistico valor
+#>    <chr>  <chr>       <dbl>
+#>  1 NH0046 media       17.3 
+#>  2 NH0046 desvio       5.90
+#>  3 NH0098 media       18.6 
+#>  4 NH0098 desvio       5.98
+#>  5 NH0437 media       20.2 
+#>  6 NH0437 desvio       5.77
+#>  7 NH0472 media       18.0 
+#>  8 NH0472 desvio       5.94
+#>  9 NH0910 media       17.7 
+#> 10 NH0910 desvio       6.12
+```
 
-¿Querés solo algunas estaciones? Usá ids:
+¿Querés solo algunas estaciones? Filtralas antes:
 
-{r resumen-filtrado} tabla_resumen_temperatura(estaciones, ids =
-c(“NH0437”, “NH0472”))
+``` r
+seleccion <- estaciones[estaciones$id %in% c("NH0437", "NH0472"), ]
 
-Los valores faltantes (NA) se ignoran en los cálculos.
+tabla_resumen_temperatura(seleccion)
+#> # A tibble: 4 × 3
+#>   id     estadistico valor
+#>   <chr>  <chr>       <dbl>
+#> 1 NH0437 media       20.2 
+#> 2 NH0437 desvio       5.77
+#> 3 NH0472 media       18.0 
+#> 4 NH0472 desvio       5.94
+```
+
+Los valores faltantes (`NA`) se ignoran en los cálculos.
 
 ## 📊 Graficar la temperatura mensual
 
-El gráfico muestra el promedio de cada mes del año, juntando los mismos
-meses de todos los años. Podés elegir los colores y el título:
+El gráfico muestra la temperatura media de cada mes, para cada estación.
+Podés elegir los colores y el título:
 
-{r grafico-mensual} seleccion \<- estaciones\[estaciones\$id %in%
-c(“NH0437”, “NH0472”), \]
+``` r
+grafico_temperatura_mensual(
+  seleccion,
+  colores = c(NH0437 = "steelblue", NH0472 = "tomato"),
+  titulo = "Temperatura media mensual"
+)
+#> Warning: Removed 1 row containing missing values or values outside the scale range
+#> (`geom_line()`).
+```
 
-grafico_temperatura_mensual( seleccion, colores = c(NH0437 =
-“steelblue”, NH0472 = “tomato”), titulo = “Temperatura media mensual” )
+<img src="man/figures/README-grafico-mensual-1.png" alt="" width="100%" />
 
 ## 📚 Documentación
 
 Cada función tiene su ayuda dentro de R:
 
-{r ayuda, eval=FALSE} ?leer_datos ?tabla_resumen_temperatura
+``` r
+?descargar_estacion
+?tabla_resumen_temperatura
 ?grafico_temperatura_mensual
+?estaciones
+```
 
 La guía de uso completa está en el [sitio web del
 paquete](https://maipochettino.github.io/lloRando/).
@@ -111,12 +160,6 @@ paquete](https://maipochettino.github.io/lloRando/).
 - Mailén Pochettino
 - Ornella Quintanilla
 - Candela Cambiaso
-
-## 🤝 Contribuciones
-
-¿Encontraste un error o tenés una idea? Leé la [guía para
-contribuir](CONTRIBUTING.md). Todas las personas que participen deben
-respetar el [código de conducta](CODE_OF_CONDUCT.md).
 
 ## 📄 Licencia
 
