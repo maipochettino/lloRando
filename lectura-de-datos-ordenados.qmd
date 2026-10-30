@@ -138,18 +138,6 @@ resumen <- estacion_completo |>
 resumen
 ```
 
-```{r}library(tidyr)}
-
-resumen_largo <- resumen |>
-  pivot_longer(
-    cols = c(promedio, desvio_estandar),
-    names_to = "estadistico",
-    values_to = "valor"
-  )
-resumen_largo
-
-```
-
 ```{r}
 library(tidyr)
 
