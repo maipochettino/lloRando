@@ -29,3 +29,6 @@ VignetteBuilder: knitr
     stats,
     tidyr,
     utils
+Depends: 
+    R (>= 3.5)
+LazyData: true
