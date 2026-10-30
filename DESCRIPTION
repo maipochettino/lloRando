@@ -1,15 +1,23 @@
 Package: lloRando
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
-Authors@R: 
-    person("Candela", "Cambiaso", , "ccambiaso@mail.austral.edu.ar", role = c("aut", "cre"))
-    person("Ornella", "Quintanilla", "oquintanilla@mail.austral.edu.ar", role = c("aut", "cre"))
-    person("Mailén", "Pochettino", "mipochettinodelpuer@mail.austral.edu.ar", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
-Config/roxygen2/version: 8.1.1
+Authors@R: c(
+    person("Mailén", "Pochettino", , "mipochettinodelpuer@mail.austral.edu.ar", role = c("aut", "cre")),
+    person("Ornella", "Quintanilla", , "oquintanilla@mail.austral.edu.ar", role = "aut"),
+    person("Candela", "Cambiaso", , "ccambiaso@mail.austral.edu.ar", role = "aut")
+  )
+Description: Paquete de R desarrollado para Programacion II. Permite
+    descargar y leer datos diarios de estaciones meteorologicas del INTA,
+    calcular resumenes de temperatura y graficar la temperatura media
+    mensual de cada estacion.
+License: MIT + file LICENSE
 Encoding: UTF-8
+Config/roxygen2/version: 8.1.1
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/maipochettino/lloRando
 BugReports: https://github.com/maipochettino/lloRando/issues
+Imports: 
+    dplyr,
+    ggplot2,
+    lubridate,
+    readr
