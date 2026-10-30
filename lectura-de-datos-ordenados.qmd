@@ -24,14 +24,9 @@ estacion_NH0437 <- read.csv("data/estacion-NH0437.csv")
 
 ```{r}
 library(dplyr)
-library(lubridate
+library(lubridate)
+library (ggplot2)
 ```
-
-```{r}
-
-```
-
-`{)}`
 
 ```{r}
 glimpse(metadatos)
@@ -107,4 +102,28 @@ estacion_completo |>
     precip_acumulada = sum(precipitacion_pluviometrica, na.rm = TRUE),
     .groups = "drop"
   )
+```
+
+```{r}
+estacion_completo|>
+  filter(id=="NH0437")|>
+  mutate(fecha= as.Date(fecha))|>
+  ggplot(aes(fecha, temperatura_abrigo_150cm))+geom_point(alpha=0.3 , size=0.8)+geom_smooth(method = "lm", color="pink")
+```
+
+```{r}
+estacion_completo|>
+  mutate(fecha=as.Date(fecha), mes=month(fecha))|>
+  group_by(id,mes)|>
+  summarise(prom_mensual = mean(temperatura_abrigo_150cm, na.rm=TRUE), .groups = "drop")|>
+  ggplot(aes(mes, prom_mensual, color=id))+
+  geom_line()+
+  labs(x="Fecha", y="Temperatura media mensual", color="estación")
+```
+
+```{r}
+estacion_completo|>
+  ggplot(aes(temperatura_abrigo_150cm, humedad_media_8_14_20))+
+  geom_point(alpha=0.3 , size=0.8)+geom_smooth()
+  
 ```
