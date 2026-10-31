@@ -227,8 +227,34 @@ Número 01 · Santa Fe, Argentina · Datos del INTA
 <h2 id="detrás-de-escena">Detrás de escena<a class="anchor" aria-label="anchor" href="#detr%C3%A1s-de-escena"></a>
 </h2>
 <ul>
-<li>**Sin</li>
+<li><ul>
+<li>
+<strong>Sin descargas repetidas.</strong> <code><a href="reference/descargar_estacion.html">descargar_estacion()</a></code> se fija primero si el archivo existe.</li>
+</ul></li>
+<li>
+<strong>Sin sorpresas con los <code>NA</code>.</strong> Los resúmenes ignoran los días sin dato en lugar de devolver <code>NA</code>.</li>
+<li>
+<strong>Probado.</strong> Cada función tiene tests automáticos que se corren con <code>devtools::test()</code>.</li>
+<li>
+<strong>Documentado.</strong> Cada función y cada dataset tienen su página de ayuda: <code><a href="reference/descargar_estacion.html">?descargar_estacion</a></code>, <code><a href="reference/tabla_resumen_temperatura.html">?tabla_resumen_temperatura</a></code>, <code><a href="reference/grafico_temperatura_mensual.html">?grafico_temperatura_mensual</a></code> y <code><a href="reference/estaciones.html">?estaciones</a></code>.</li>
 </ul>
+<p>Para un recorrido paso a paso, leé <a href="articles/uso_de_llorando.html">la guía</a>, y para el detalle de cada argumento, la sección de <a href="reference/index.html">funciones</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="las-autoras">Las autoras<a class="anchor" aria-label="anchor" href="#las-autoras"></a>
+</h2>
+<p><em>lloRando</em> nació como proyecto de la materia Introducción a la Programación II, a seis manos:</p>
+<ul>
+<li><strong>Mailén Pochettino</strong></li>
+<li><strong>Ornella Quintanilla</strong></li>
+<li><strong>Candela Cambiaso</strong></li>
+</ul>
+<p>Es un paquete de práctica y no está pensado para un uso real, pero sí para aprender cómo se hace uno de verdad.</p>
+</div>
+<div class="section level2">
+<h2 id="créditos">Créditos<a class="anchor" aria-label="anchor" href="#cr%C3%A9ditos"></a>
+</h2>
+<p>Los datos provienen de las estaciones meteorológicas del INTA y se obtuvieron del <a href="https://github.com/rse-r/intro-programacion/tree/main/datos" class="external-link">repositorio del curso</a>. El código está bajo licencia MIT.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
