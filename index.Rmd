@@ -148,4 +148,35 @@ Zavalla, y los inviernos se separan más que los veranos.
 
 ## Detrás de escena
 
-- **Sin
+- - **Sin descargas repetidas.** `descargar_estacion()` se fija primero si
+  el archivo existe.
+- **Sin sorpresas con los `NA`.** Los resúmenes ignoran los días sin
+  dato en lugar de devolver `NA`.
+- **Probado.** Cada función tiene tests automáticos que se corren con
+  `devtools::test()`.
+- **Documentado.** Cada función y cada dataset tienen su página de
+  ayuda: `?descargar_estacion`, `?tabla_resumen_temperatura`,
+  `?grafico_temperatura_mensual` y `?estaciones`.
+
+Para un recorrido paso a paso, leé [la guía](articles/uso_de_llorando.html),
+y para el detalle de cada argumento, la sección de
+[funciones](reference/index.html).
+
+## Las autoras
+
+*lloRando* nació como proyecto de la materia Introducción a la
+Programación II, a seis manos:
+
+- **Mailén Pochettino**
+- **Ornella Quintanilla**
+- **Candela Cambiaso**
+
+Es un paquete de práctica y no está pensado para un uso real, pero sí
+para aprender cómo se hace uno de verdad.
+
+## Créditos
+
+Los datos provienen de las estaciones meteorológicas del INTA y se
+obtuvieron del
+[repositorio del curso](https://github.com/rse-r/intro-programacion/tree/main/datos).
+El código está bajo licencia MIT.
