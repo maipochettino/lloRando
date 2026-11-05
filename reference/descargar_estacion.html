@@ -52,16 +52,23 @@ indicada, lo lee directamente sin volver a descargarlo.</p>
 
 
 <dl><dt id="arg-id">id<a class="anchor" aria-label="anchor" href="#arg-id"></a></dt>
-<dd><p>Identificador de la estación, por ejemplo "NH0437".</p></dd>
+<dd><p>Identificador de la estación, por ejemplo <code>"NH0437"</code>.</p></dd>
 
 
 <dt id="arg-ruta">ruta<a class="anchor" aria-label="anchor" href="#arg-ruta"></a></dt>
-<dd><p>Ruta donde se guardará el archivo CSV.</p></dd>
+<dd><p>Ruta donde se guarda el CSV. Si el archivo ya existe, se lee
+sin volver a descargar. Si la carpeta no existe, se crea.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>Un tibble con los datos de la estación.</p>
+<p>Un tibble con los datos de la estación.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Para descargar necesita conexión a Internet. Los datos se
+obtienen del repositorio del curso.</p>
     </div>
 
     <div class="section level2">

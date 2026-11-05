@@ -14,15 +14,23 @@ descargar_estacion(id, ruta)
 
 - id:
 
-  Identificador de la estación, por ejemplo "NH0437".
+  Identificador de la estación, por ejemplo `"NH0437"`.
 
 - ruta:
 
-  Ruta donde se guardará el archivo CSV.
+  Ruta donde se guarda el CSV. Si el archivo ya existe, se lee sin
+  volver a descargar. Si la carpeta no existe, se crea.
 
 ## Value
 
 Un tibble con los datos de la estación.
+
+Un tibble con los datos de la estación.
+
+## Details
+
+Para descargar necesita conexión a Internet. Los datos se obtienen del
+repositorio del curso.
 
 ## Examples
 

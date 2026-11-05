@@ -13,11 +13,12 @@ tabla_resumen_temperatura(datos)
 
 - datos:
 
-  Data frame con las columnas id y temperatura_abrigo_150cm.
+  Data frame con las columnas `id` y `temperatura_abrigo_150cm`.
 
 ## Value
 
-Un tibble con la estación, el estadístico y su valor.
+Un tibble en formato largo con tres columnas: `id` (estación),
+`estadistico` (`"media"` o `"desvio"`) y `valor`. Los `NA` se ignoran.
 
 ## Examples
 

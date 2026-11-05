@@ -49,29 +49,34 @@ de una o más estaciones meteorológicas.</p>
 
 
 <dl><dt id="arg-datos">datos<a class="anchor" aria-label="anchor" href="#arg-datos"></a></dt>
-<dd><p>Data frame con las columnas fecha,
-id y temperatura_abrigo_150cm.</p></dd>
+<dd><p>Data frame con las columnas <code>fecha</code> (tipo <code>Date</code>), <code>id</code> y
+<code>temperatura_abrigo_150cm</code>.</p></dd>
 
 
 <dt id="arg-colores">colores<a class="anchor" aria-label="anchor" href="#arg-colores"></a></dt>
-<dd><p>Vector de colores para las estaciones.
-Si es NULL, se eligen colores al azar.</p></dd>
+<dd><p>Vector con un color por estación. Si tiene nombres, los
+nombres deben coincidir con los <code>id</code>. Si no tiene nombres, se asignan
+en el orden en que aparecen las estaciones. Si es <code>NULL</code>, se eligen
+colores al azar.</p></dd>
 
 
 <dt id="arg-titulo">titulo<a class="anchor" aria-label="anchor" href="#arg-titulo"></a></dt>
-<dd><p>Título del gráfico. Por defecto, "Temperatura".</p></dd>
+<dd><p>Título del gráfico. Por defecto, <code>"Temperatura"</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Un gráfico de ggplot2.</p>
+    <p>Un objeto de ggplot2, que se puede seguir modificando con <code>+</code>.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Se da error si <code>datos</code> no tiene filas o si la cantidad de colores
+no coincide con la cantidad de estaciones.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">grafico_temperatura_mensual</span><span class="op">(</span><span class="va">estaciones</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Removed 1 row containing missing values or values outside the scale range</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> (`geom_line()`).</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">grafico_temperatura_mensual</span><span class="op">(</span><span class="va">estaciones</span><span class="op">[</span><span class="va">estaciones</span><span class="op">$</span><span class="va">id</span> <span class="op">==</span> <span class="st">"NH0437"</span>, <span class="op">]</span>, <span class="st">"steelblue"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="grafico_temperatura_mensual-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
