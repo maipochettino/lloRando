@@ -7,17 +7,24 @@
 descargar_estacion(id, ruta)
 }
 \arguments{
-\item{id}{Identificador de la estación, por ejemplo "NH0437".}
+\item{id}{Identificador de la estación, por ejemplo \code{"NH0437"}.}
 
-\item{ruta}{Ruta donde se guardará el archivo CSV.}
+\item{ruta}{Ruta donde se guarda el CSV. Si el archivo ya existe, se lee
+sin volver a descargar. Si la carpeta no existe, se crea.}
 }
 \value{
+Un tibble con los datos de la estación.
+
 Un tibble con los datos de la estación.
 }
 \description{
 Descarga el CSV de una estación meteorológica y lo lee
 como un data.frame. Si el archivo ya existe en la ruta
 indicada, lo lee directamente sin volver a descargarlo.
+}
+\details{
+Para descargar necesita conexión a Internet. Los datos se
+obtienen del repositorio del curso.
 }
 \examples{
 \dontrun{
