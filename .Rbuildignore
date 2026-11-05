@@ -9,3 +9,5 @@
 ^pkgdown$
 ^\.github$
 ^CODE_OF_CONDUCT\.md$
+^index\.Rmd$
+^index\.md$

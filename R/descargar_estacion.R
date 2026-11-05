@@ -6,9 +6,14 @@
 #' como un data.frame. Si el archivo ya existe en la ruta
 #' indicada, lo lee directamente sin volver a descargarlo.
 #'
-#' @param id Identificador de la estación, por ejemplo "NH0437".
-#' @param ruta Ruta donde se guardará el archivo CSV.
+#' @param id Identificador de la estación, por ejemplo `"NH0437"`.
+#' @param ruta Ruta donde se guarda el CSV. Si el archivo ya existe, se lee
+#'   sin volver a descargar. Si la carpeta no existe, se crea.
 #'
+#' @details Para descargar necesita conexión a Internet. Los datos se
+#'   obtienen del repositorio del curso.
+#'
+#' @return Un tibble con los datos de la estación.
 #' @return Un tibble con los datos de la estación.
 #' @export
 #'

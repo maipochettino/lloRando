@@ -7,19 +7,16 @@
 tabla_resumen_temperatura(datos)
 }
 \arguments{
-\item{datos}{Data frame con las columnas id
-y temperatura_abrigo_150cm.}
+\item{datos}{Data frame con las columnas \code{id} y \code{temperatura_abrigo_150cm}.}
 }
 \value{
-Un tibble con la estación, el estadístico
-y su valor.
+Un tibble en formato largo con tres columnas: \code{id} (estación),
+\code{estadistico} (\code{"media"} o \code{"desvio"}) y \code{valor}. Los \code{NA} se ignoran.
 }
 \description{
 Calcula la media y el desvío estándar de la temperatura
 de abrigo a 150 cm para cada estación.
 }
 \examples{
-\dontrun{
-tabla_resumen_temperatura(datos_meteorologicos)
-}
+tabla_resumen_temperatura(estaciones)
 }

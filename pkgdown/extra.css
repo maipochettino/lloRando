@@ -1,0 +1,206 @@
+:root {
+  --ll-tinta: #141414;
+  --ll-marfil: #FAF7F2;
+  --ll-papel: #F1ECE3;
+  --ll-lila: #5B3F8C;
+  --ll-gris: #8C8378;
+  --ll-linea: #D9D2C5;
+}
+
+body {
+  background: var(--ll-marfil);
+  color: var(--ll-tinta);
+  -webkit-font-smoothing: antialiased;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--ll-tinta);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.navbar-brand {
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.navbar .nav-link {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.navbar .nav-text,
+.navbar .version {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--ll-gris) !important;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Bodoni Moda", serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+main h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+  margin-bottom: 0.5rem;
+}
+
+main {
+  counter-reset: seccion;
+}
+
+main h2 {
+  font-style: italic;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ll-tinta);
+}
+
+main h2::before {
+  counter-increment: seccion;
+  content: "N° " counter(seccion, decimal-leading-zero);
+  display: block;
+  margin-bottom: 0.6rem;
+  font-family: "Libre Franklin", sans-serif;
+  font-style: normal;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: var(--ll-lila);
+}
+
+main h3 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.kicker {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ll-gris);
+  margin-bottom: 2.5rem;
+}
+
+main blockquote {
+  border: none;
+  border-top: 1px solid var(--ll-linea);
+  border-bottom: 1px solid var(--ll-linea);
+  margin: 2.5rem 0;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+main blockquote p {
+  font-family: "Bodoni Moda", serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.lede p {
+  font-size: 1.2rem;
+  line-height: 1.75;
+}
+
+.lede p:first-child::first-letter {
+  float: left;
+  font-family: "Bodoni Moda", serif;
+  font-size: 4.6rem;
+  line-height: 0.85;
+  padding: 0.35rem 0.6rem 0 0;
+  color: var(--ll-lila);
+}
+
+.cifras {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin: 2rem 0;
+  border-top: 1px solid var(--ll-tinta);
+  border-bottom: 1px solid var(--ll-tinta);
+}
+
+.cifras .cifra {
+  padding: 1.5rem 1rem;
+  border-right: 1px solid var(--ll-linea);
+}
+
+.cifras .cifra:last-child {
+  border-right: none;
+}
+
+.cifras .numero {
+  display: block;
+  font-family: "Bodoni Moda", serif;
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.cifras .etiqueta {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ll-gris);
+}
+
+main table {
+  border-top: 1px solid var(--ll-tinta);
+  border-bottom: 1px solid var(--ll-tinta);
+}
+
+main table th {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--ll-tinta) !important;
+}
+
+main table td {
+  border-color: var(--ll-linea) !important;
+}
+
+pre {
+  background: var(--ll-papel) !important;
+  border: none;
+  border-left: 3px solid var(--ll-lila);
+  padding: 1.1rem 1.25rem;
+}
+
+code {
+  font-size: 0.88em;
+}
+
+main a {
+  color: var(--ll-tinta);
+  text-decoration: underline;
+  text-decoration-color: var(--ll-lila);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+main a:hover {
+  color: var(--ll-lila);
+}
+
+main img:not(.logo) {
+  border: 1px solid var(--ll-linea);
+  background: #fff;
+}
+
+aside h2,
+aside h3 {
+  font-family: "Libre

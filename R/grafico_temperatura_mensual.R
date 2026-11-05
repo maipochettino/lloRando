@@ -3,6 +3,7 @@
 #' Calcula y grafica la temperatura media mensual
 #' de una o más estaciones meteorológicas.
 #'
+<<<<<<< HEAD
 #' @param datos Data frame con las columnas fecha,
 #' id y temperatura_abrigo_150cm.
 #' @param colores Vector con un color por estación. Si tiene nombres, deben
@@ -10,14 +11,24 @@
 #'   que aparecen las estaciones. Si es NULL, se usa la paleta
 #'   "Dark 3" de [grDevices::hcl.colors()].
 #' @param titulo Título del gráfico. Por defecto, "Temperatura".
+=======
+#' @param datos Data frame con las columnas `fecha` (tipo `Date`), `id` y
+#'   `temperatura_abrigo_150cm`.
+#' @param colores Vector con un color por estación. Si tiene nombres, los
+#'   nombres deben coincidir con los `id`. Si no tiene nombres, se asignan
+#'   en el orden en que aparecen las estaciones. Si es `NULL`, se eligen
+#'   colores al azar.
+#' @param titulo Título del gráfico. Por defecto, `"Temperatura"`.
+>>>>>>> d96e60fb4ef9c3516eb2a6e8260a17481f4649d7
 #'
-#' @return Un gráfico de ggplot2.
+#' @details Se da error si `datos` no tiene filas o si la cantidad de colores
+#'   no coincide con la cantidad de estaciones.
+#'
+#' @return Un objeto de ggplot2, que se puede seguir modificando con `+`.
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' grafico_temperatura_mensual(datos_meteorologicos)
-#' }
+#' grafico_temperatura_mensual(estaciones[estaciones$id == "NH0437", ], "steelblue")
 grafico_temperatura_mensual <- function(
     datos,
     colores = NULL,
@@ -38,7 +49,9 @@ grafico_temperatura_mensual <- function(
     stop("Debe indicarse un color por cada estaci\u00f3n.")
   }
 
-  names(colores) <- estaciones
+  if (is.null(names(colores))) {
+    names(colores) <- estaciones
+  }
 
   datos_mensuales <- datos |>
     dplyr::mutate(
@@ -74,3 +87,5 @@ grafico_temperatura_mensual <- function(
 
   return(grafico)
 }
+
+

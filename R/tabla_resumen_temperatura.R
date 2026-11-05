@@ -3,17 +3,14 @@
 #' Calcula la media y el desvío estándar de la temperatura
 #' de abrigo a 150 cm para cada estación.
 #'
-#' @param datos Data frame con las columnas id
-#' y temperatura_abrigo_150cm.
+#' @param datos Data frame con las columnas `id` y `temperatura_abrigo_150cm`.
 #'
-#' @return Un tibble con la estación, el estadístico
-#' y su valor.
+#' @return Un tibble en formato largo con tres columnas: `id` (estación),
+#'   `estadistico` (`"media"` o `"desvio"`) y `valor`. Los `NA` se ignoran.
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' tabla_resumen_temperatura(datos_meteorologicos)
-#' }
+#' tabla_resumen_temperatura(estaciones)
 tabla_resumen_temperatura <- function(datos) {
 
   resumen <- datos |>
