@@ -19,7 +19,5 @@ Calcula la media y el desvío estándar de la temperatura
 de abrigo a 150 cm para cada estación.
 }
 \examples{
-\dontrun{
-tabla_resumen_temperatura(datos_meteorologicos)
-}
+tabla_resumen_temperatura(estaciones)
 }

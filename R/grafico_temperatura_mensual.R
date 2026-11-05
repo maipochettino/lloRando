@@ -13,9 +13,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' grafico_temperatura_mensual(datos_meteorologicos)
-#' }
+#' grafico_temperatura_mensual(estaciones)
 grafico_temperatura_mensual <- function(
     datos,
     colores = NULL,

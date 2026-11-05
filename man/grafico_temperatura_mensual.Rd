@@ -23,7 +23,5 @@ Calcula y grafica la temperatura media mensual
 de una o más estaciones meteorológicas.
 }
 \examples{
-\dontrun{
-grafico_temperatura_mensual(datos_meteorologicos)
-}
+grafico_temperatura_mensual(estaciones)
 }
