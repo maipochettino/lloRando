@@ -5,8 +5,10 @@
 #'
 #' @param datos Data frame con las columnas fecha,
 #' id y temperatura_abrigo_150cm.
-#' @param colores Vector de colores para las estaciones.
-#' Si es NULL, se eligen colores al azar.
+#' @param colores Vector con un color por estación. Si tiene nombres, deben
+#'   coincidir con los id. Si no tiene nombres, se asignan en el orden en
+#'   que aparecen las estaciones. Si es NULL, se usa la paleta
+#'   "Dark 3" de [grDevices::hcl.colors()].
 #' @param titulo Título del gráfico. Por defecto, "Temperatura".
 #'
 #' @return Un gráfico de ggplot2.
@@ -29,9 +31,7 @@ grafico_temperatura_mensual <- function(
 
   if (is.null(colores)) {
     colores <- sample(
-      grDevices::colors(),
-      length(estaciones)
-    )
+      grDevices::hcl.colors(length(estaciones)), "Dark 3")
   }
 
   if (length(colores) != length(estaciones)) {
