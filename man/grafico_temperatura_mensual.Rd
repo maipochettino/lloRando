@@ -7,21 +7,27 @@
 grafico_temperatura_mensual(datos, colores = NULL, titulo = "Temperatura")
 }
 \arguments{
-\item{datos}{Data frame con las columnas fecha,
-id y temperatura_abrigo_150cm.}
+\item{datos}{Data frame con las columnas \code{fecha} (tipo \code{Date}), \code{id} y
+\code{temperatura_abrigo_150cm}.}
 
-\item{colores}{Vector de colores para las estaciones.
-Si es NULL, se eligen colores al azar.}
+\item{colores}{Vector con un color por estación. Si tiene nombres, los
+nombres deben coincidir con los \code{id}. Si no tiene nombres, se asignan
+en el orden en que aparecen las estaciones. Si es \code{NULL}, se eligen
+colores al azar.}
 
-\item{titulo}{Título del gráfico. Por defecto, "Temperatura".}
+\item{titulo}{Título del gráfico. Por defecto, \code{"Temperatura"}.}
 }
 \value{
-Un gráfico de ggplot2.
+Un objeto de ggplot2, que se puede seguir modificando con \code{+}.
 }
 \description{
 Calcula y grafica la temperatura media mensual
 de una o más estaciones meteorológicas.
 }
+\details{
+Se da error si \code{datos} no tiene filas o si la cantidad de colores
+no coincide con la cantidad de estaciones.
+}
 \examples{
-grafico_temperatura_mensual(estaciones)
+grafico_temperatura_mensual(estaciones[estaciones$id == "NH0437", ], "steelblue")
 }
