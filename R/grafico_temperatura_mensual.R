@@ -31,8 +31,7 @@ grafico_temperatura_mensual <- function(
   }
 
   if (is.null(colores)) {
-    colores <- sample(
-      grDevices::hcl.colors(length(estaciones)), "Dark 3")
+    colores <- grDevices::hcl.colors(length(estaciones), "Dark 3")
   }
 
   if (length(colores) != length(estaciones)) {
