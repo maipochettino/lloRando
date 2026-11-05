@@ -11,9 +11,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' tabla_resumen_temperatura(datos_meteorologicos)
-#' }
+#' tabla_resumen_temperatura(estaciones)
 tabla_resumen_temperatura <- function(datos) {
 
   resumen <- datos |>
