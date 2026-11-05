@@ -7,6 +7,9 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/maipochettino/lloRando/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/maipochettino/lloRando/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/maipochettino/lloRando/graph/badge.svg)](https://app.codecov.io/gh/maipochettino/lloRando)
 <!-- badges: end -->
 
 > Porque a veces el clima te hace llorar… y los datos meteorológicos
