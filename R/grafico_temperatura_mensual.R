@@ -15,6 +15,7 @@
 #'   no coincide con la cantidad de estaciones.
 #'
 #' @return Un objeto de ggplot2, que se puede seguir modificando con `+`.
+#' @export
 #'
 #' @examples
 #' grafico_temperatura_mensual(estaciones[estaciones$id == "NH0437", ], "steelblue")

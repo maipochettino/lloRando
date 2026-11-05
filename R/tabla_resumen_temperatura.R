@@ -7,6 +7,7 @@
 #'
 #' @return Un tibble en formato largo con tres columnas: `id` (estación),
 #'   `estadistico` (`"media"` o `"desvio"`) y `valor`. Los `NA` se ignoran.
+#' @export
 #'
 #' @examples
 #' tabla_resumen_temperatura(estaciones)
