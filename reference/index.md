@@ -17,7 +17,5 @@ Listos para usar, sin descargar nada.
 
 - [`estaciones`](https://maipochettino.github.io/lloRando/reference/estaciones.md)
   : Datos diarios de cinco estaciones del INTA
-- [`estacion_completo`](https://maipochettino.github.io/lloRando/reference/estacion_completo.md)
-  : Datos meteorológicos de estaciones
 - [`metadatos`](https://maipochettino.github.io/lloRando/reference/metadatos.md)
   : Metadatos de estaciones meteorológicas

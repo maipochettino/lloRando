@@ -33,7 +33,8 @@ head(estaciones[c("id", "fecha", "temperatura_abrigo_150cm")])
 ## Resumir la temperatura
 
 [`tabla_resumen_temperatura()`](https://maipochettino.github.io/lloRando/reference/tabla_resumen_temperatura.md)
-calcula el promedio y el desvío
+calcula el promedio y el desvío estándar de la temperatura de cada
+estación.
 
 ``` r
 

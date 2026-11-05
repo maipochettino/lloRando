@@ -31,7 +31,7 @@ Un gráfico de ggplot2.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
-grafico_temperatura_mensual(datos_meteorologicos)
-} # }
+grafico_temperatura_mensual(estaciones)
+#> Warning: Removed 1 row containing missing values or values outside the scale range
+#> (`geom_line()`).
 ```
