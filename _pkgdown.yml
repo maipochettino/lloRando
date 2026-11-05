@@ -1,3 +1,62 @@
 url: https://maipochettino.github.io/lloRando/
+
+lang: es
+
 template:
   bootstrap: 5
+  light-switch: false
+  bslib:
+    bg: "#FAF7F2"
+    fg: "#141414"
+    primary: "#5B3F8C"
+    secondary: "#8C8378"
+    base_font: {google: "Libre Franklin"}
+    heading_font: {google: "Bodoni Moda"}
+    code_font: {google: "IBM Plex Mono"}
+    font-size-base: "1.05rem"
+    line-height-base: 1.7
+    border-radius: "0"
+    border-radius-sm: "0"
+    border-radius-lg: "0"
+    link-decoration: none
+    navbar-bg: "#FAF7F2"
+    navbar-light-color: "#141414"
+    navbar-light-hover-color: "#5B3F8C"
+
+navbar:
+  type: light
+  structure:
+    left: [reference, articles]
+    right: [search, github]
+  components:
+    reference:
+      text: Funciones
+      href: reference/index.html
+    articles:
+      text: La guía
+      href: articles/uso_de_llorando.html
+
+home:
+  title: "lloRando · Datos del clima del INTA, con estilo"
+  description: >
+    Un paquete de R para descargar, resumir y graficar datos diarios
+    de estaciones meteorológicas del INTA.
+
+reference:
+  - title: Funciones
+    desc: Las tres piezas del paquete, de los datos crudos al gráfico.
+    contents:
+      - descargar_estacion
+      - tabla_resumen_temperatura
+      - grafico_temperatura_mensual
+  - title: Datos
+    desc: Listos para usar, sin descargar nada.
+    contents:
+      - estaciones
+      - estacion_completo
+      - metadatos
+
+footer:
+  structure:
+    left: developed_by
+    right: built_with

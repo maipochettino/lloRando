@@ -36,7 +36,9 @@ grafico_temperatura_mensual <- function(
     stop("Debe indicarse un color por cada estaci\u00f3n.")
   }
 
-  names(colores) <- estaciones
+  if (is.null(names(colores))) {
+    names(colores) <- estaciones
+  }
 
   datos_mensuales <- datos |>
     dplyr::mutate(
@@ -72,3 +74,5 @@ grafico_temperatura_mensual <- function(
 
   return(grafico)
 }
+
+

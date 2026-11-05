@@ -16,3 +16,12 @@ test_that("da error si no hay datos", {
 test_that("da error si la cantidad de colores no coincide", {
   expect_error(grafico_temperatura_mensual(datos_prueba, colores = "red"))
 })
+test_that("respeta los nombres de los colores", {
+  g <- grafico_temperatura_mensual(
+    datos_prueba,
+    colores = c(B = "blue", A = "red")
+  )
+  escala <- g$scales$get_scales("colour")
+  expect_equal(escala$palette(2)[["A"]], "red")
+  expect_equal(escala$palette(2)[["B"]], "blue")
+})
