@@ -13,18 +13,18 @@ grafico_temperatura_mensual(datos, colores = NULL, titulo = "Temperatura")
 
 - datos:
 
-  Data frame con las columnas `fecha` (tipo `Date`), `id` y
-  `temperatura_abrigo_150cm`.
+  Data frame con las columnas fecha, id y temperatura_abrigo_150cm.
 
 - colores:
 
-  Vector con un color por estación. Si tiene nombres, los nombres deben
-  coincidir con los `id`. Si no tiene nombres, se asignan en el orden en
-  que aparecen las estaciones. Si es `NULL`, se eligen colores al azar.
+  Vector con un color por estación. Si tiene nombres, deben coincidir
+  con los id. Si no tiene nombres, se asignan en el orden en que
+  aparecen las estaciones. Si es NULL, se usa la paleta "Dark 3" de
+  [`grDevices::hcl.colors()`](https://rdrr.io/r/grDevices/palettes.html).
 
 - titulo:
 
-  Título del gráfico. Por defecto, `"Temperatura"`.
+  Título del gráfico. Por defecto, "Temperatura".
 
 ## Value
 

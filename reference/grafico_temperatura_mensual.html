@@ -49,19 +49,19 @@ de una o más estaciones meteorológicas.</p>
 
 
 <dl><dt id="arg-datos">datos<a class="anchor" aria-label="anchor" href="#arg-datos"></a></dt>
-<dd><p>Data frame con las columnas <code>fecha</code> (tipo <code>Date</code>), <code>id</code> y
-<code>temperatura_abrigo_150cm</code>.</p></dd>
+<dd><p>Data frame con las columnas fecha,
+id y temperatura_abrigo_150cm.</p></dd>
 
 
 <dt id="arg-colores">colores<a class="anchor" aria-label="anchor" href="#arg-colores"></a></dt>
-<dd><p>Vector con un color por estación. Si tiene nombres, los
-nombres deben coincidir con los <code>id</code>. Si no tiene nombres, se asignan
-en el orden en que aparecen las estaciones. Si es <code>NULL</code>, se eligen
-colores al azar.</p></dd>
+<dd><p>Vector con un color por estación. Si tiene nombres, deben
+coincidir con los id. Si no tiene nombres, se asignan en el orden en
+que aparecen las estaciones. Si es NULL, se usa la paleta
+"Dark 3" de <code><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">grDevices::hcl.colors()</a></code>.</p></dd>
 
 
 <dt id="arg-titulo">titulo<a class="anchor" aria-label="anchor" href="#arg-titulo"></a></dt>
-<dd><p>Título del gráfico. Por defecto, <code>"Temperatura"</code>.</p></dd>
+<dd><p>Título del gráfico. Por defecto, "Temperatura".</p></dd>
 
 </dl></div>
     <div class="section level2">
